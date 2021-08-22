@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const cors = require("cors");
 const port = 3001;
 const userHandler = require("./routeHandler/userHandler");
 const checkLogin = require("./middlewares/checkLogin");
@@ -8,9 +9,10 @@ const checkLogin = require("./middlewares/checkLogin");
 const app = express();
 dotenv.config();
 app.use(express.json());
+app.use(cors());
 
-app.get("/", checkLogin, (req, res) => {
-  res.send("Hello World!");
+app.get("/", (req, res) => {
+  res.status(201).json({ wellcome: "Hello World!" });
 });
 
 //app routes
