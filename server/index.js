@@ -35,7 +35,7 @@ app.use("/user", userHandler);
 
 //db connection
 mongoose
-  .connect("mongodb://localhost:27017/msc-project", {
+  .connect(process.env.DB_URL, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
   })
